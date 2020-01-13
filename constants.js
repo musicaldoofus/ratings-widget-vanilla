@@ -1,6 +1,6 @@
 /*constants.js*/
 
-consts API_CONSTANTS = {
+const API_CONSTANTS = {
     GET_ENDPOINT: '',
     PUT_ENDPOINT: ''
 };
