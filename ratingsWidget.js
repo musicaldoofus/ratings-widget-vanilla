@@ -1,8 +1,7 @@
-//import API_CONSTANTS from './constants';
-
-const feedbackElements = document.getElementsByClassName('feedback');
-
-//console.log('got feedbackElements', feedbackElements);
+const API_CONSTANTS = {
+    GET_ENDPOINT: '',
+    PUT_ENDPOINT: ''
+};
 
 const el = (type) => document.createElement(type ? type : 'div');
 
@@ -84,7 +83,7 @@ const getRatings = (objId) => {
         xhttp.open('GET', API_CONSTANTS.GET_ENDPOINT);
         xhttp.send();
         */
-       //below is a mock response as an arbitrary value while waiting for valid GET endpoint
+    //below is a mock response as an arbitrary value while waiting for valid GET endpoint
         const response = {
             avgRating: 4.33,
             amtResponses: 217,
@@ -101,4 +100,14 @@ const attachFeedbackWidget = (feedbackElement) => {
         .catch(onFailure);
 }
 
-Object.keys(feedbackElements).forEach(elem => attachFeedbackWidget(feedbackElements[elem]));
+(() => {
+    const cssLink = document.createElement('link');
+    cssLink.setAttribute('type', 'text/css');
+    cssLink.setAttribute('rel', 'stylesheet');
+    cssLink.setAttribute('href', './styles.css');
+    document.head.append(cssLink);
+
+    const feedbackElements = document.getElementsByClassName('feedback');
+
+    Object.keys(feedbackElements).forEach(elem => attachFeedbackWidget(feedbackElements[elem]));
+})();
